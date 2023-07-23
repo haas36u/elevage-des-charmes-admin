@@ -22,9 +22,7 @@ class InfoUserController extends Controller
         $attributes = request()->validate([
             'name' => ['required', 'max:50'],
             'email' => ['required', 'email', 'max:50', Rule::unique('users')->ignore(Auth::user()->id)],
-            'phone'     => ['max:50'],
-            'location' => ['max:70'],
-            'about_me'    => ['max:150'],
+           
         ]);
         if($request->get('email') != Auth::user()->email)
         {
@@ -46,9 +44,7 @@ class InfoUserController extends Controller
         ->update([
             'name'    => $attributes['name'],
             'email' => $attribute['email'],
-            'phone'     => $attributes['phone'],
-            'location' => $attributes['location'],
-            'about_me'    => $attributes["about_me"],
+            
         ]);
 
 
